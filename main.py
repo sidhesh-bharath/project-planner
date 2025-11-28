@@ -11,9 +11,9 @@ API_KEY = os.getenv("API_KEY")
 client = genai.Client(api_key=API_KEY)
 
 def export_file(filename, content):
-    if os.path.exists("/saved-projects/") is False:
-        os.mkdir("/saved-projects/")
-    with open(f"/saved-projects/{filename}", "w") as file:   
+    if os.path.exists(f"{os.getcwd()}/saved-projects/") is False:
+        os.mkdir(f"{os.getcwd()}/saved-projects/")
+    with open(f"{os.getcwd()}/saved-projects/{filename}", "w") as file:   
         file.write(content)
 
 def parse_idea(idea, length, project_duration):
@@ -23,9 +23,9 @@ def parse_idea(idea, length, project_duration):
 )   
     file_name = client.models.generate_content(
     model="gemini-2.5-flash",
-    contents=f"Convert the following project idea into a suitable file name by removing spaces and special characters: '{idea}'. Max 3 words, all lowercase, and add .txt at the end while separating the words by using a hyphen.",
+    contents=f"Convert the following project idea into a suitable file name by removing spaces and special characters: '{idea}'. Max 3 words, all lowercase, and add .txt at the end while separating the words by using a hyphen. ONLY provide the file name as output without any extra text.",
 )
-    return response, file_name.text
+    return response, file_name
 
 def get_user_input():
     idea = input("Enter your project idea: ")
@@ -44,9 +44,9 @@ def get_user_input():
     console.print(clean_response)
 
     if export == "yes":
-        export_file(filename, response.text)
+        export_file(filename.text, response.text)
         print(f"""
-Project plan exported to /saved-projects/{filename}\n
+✅Project plan exported to /saved-projects/{filename.text}\n
 """)
 
 if __name__ == "__main__":
