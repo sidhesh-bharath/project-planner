@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+body {
+    height: 50vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: JetBrains Mono;
+    background-color: black;
+}
+
+.gradient-text {
+    font-size: 50px;
+    background: linear-gradient(120deg, #1F7A8C, #77CCA4, #B9E192, #F3EED9);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 500% 500%;
+    animation: gradient-animation 6s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    margin-top: 20px;
+    height: 40px;
+    padding: 10px 20px;
+    background: #222222;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.5s;
+    width: 30px;
+    overflow: visible;
+    color: white;
+    cursor: pointer;
+}
+
+.box:hover,
+.box.open {
+    width: 300px !important;
+}
+
+.box input {
+    width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    padding-left: 10px;
+    transition: 0.5s;
+    color: white;
+    font-family: JetBrains Mono;
+}
+
+.box:hover input,
+.box.open input {
+    width: 200px;
+}
+
+.button {
+    background: linear-gradient(120deg, #1F7A8C, #77CCA4, #B9E192, #F3EED9);
+    border-radius: 30px;
+    width: 100px;
+    height: 30px;
+    border: none;
+    font-family: JetBrains Mono;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: opacity 0.2s;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.button:active {
+    transform: scale(1.15);
+    transition: transform 0.25s ease;
+    opacity: 0.3;
+}
+
+select {    
+    background-color: #222222;
+    color: white;
+    border-radius: 30px;
+    outline: none;
+    border: 2px solid #444;
+    font-family: JetBrains Mono;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+ 
+
+select:focus {
+    border-radius: 10px;
+    border-color: #77CCA4;
+    box-shadow: 0 0 6px #77CCA4;
+}
+
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.info label {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+    font-family: JetBrains Mono;
+}
